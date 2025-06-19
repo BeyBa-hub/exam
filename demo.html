@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сортування в Доповненій Реальності - Демо</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="importmap">
+        {
+          "imports": {
+                  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    		          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+   		            "mindar":"https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-three.prod.js",
+                    "tween":"https://cdnjs.cloudflare.com/ajax/libs/tween.js/23.1.1/tween.esm.min.js"
+           }
+        }
+    </script>
+    <script type="module" src="src/main.js"></script>
+</head>
+<body>
+    <div id="ui-overlay">
+        <div id="top-ui-panel">
+            <div class="metrics-display">
+                <p>Час: <span id="execution-time">0.00</span> с</p>
+                <p>Порівняння: <span id="comparisons">0</span></p>
+                <p>Обміни: <span id="swaps">0</span></p>
+            </div>
+            <p id="ui-message">Завантаження...</p>
+        </div>
+
+        <div id="mode-switch-panel">
+            <button id="ar-mode-button">Маркерний AR</button>
+            <button id="free-mode-button">Безмаркерний</button>
+        </div>
+
+        <div id="bottom-ui-panel">
+            <div class="controls-group">
+                <div class="select-control">
+                    <label for="algorithm-select">Алгоритм:</label>
+                    <select id="algorithm-select">
+                        <option value="bubbleSort" selected>Бульбашкове</option>
+                        <option value="quickSort">Швидке</option>
+                        <option value="selectionSort">Вибором</option>
+                        <option value="insertionSort">Вставками</option>
+                        <option value="mergeSort">Злиттям</option>
+                    </select>
+                </div>
+                <div class="speed-control">
+                    <label for="animation-speed">Швидкість:</label>
+                    <input type="range" id="animation-speed" min="0.1" max="5" step="0.1" value="1">
+                    <span id="speed-value">1.0x</span>
+                </div>
+            </div>
+
+            <div class="button-group"> 
+                <button id="start-sort-button">Почати Сортування</button>
+                <button id="reset-button">Скинути</button>
+                <button id="info-button" class="info-button">?</button> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

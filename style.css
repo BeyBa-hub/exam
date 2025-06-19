@@ -1,0 +1,309 @@
+/* style.css */
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Розташувати верхній та нижній панелі по краях */
+    align-items: center;
+    padding: 10px; /* Зменшити відступи */
+    box-sizing: border-box;
+    pointer-events: none; /* Дозволити кліки лише на дочірніх елементах */
+}
+
+#ui-overlay > * {
+    pointer-events: auto; /* Дозволити кліки на елементах UI */
+}
+
+/* Стилі для верхньої панелі */
+#top-ui-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7); /* Напівпрозорий фон */
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Відступ від верху */
+    max-width: 90%; /* Обмежити ширину */
+    min-width: 250px;
+}
+
+.metrics-display {
+    display: flex;
+    justify-content: space-around; /* Рознести метрики по горизонталі */
+    width: 100%;
+    font-size: 0.9em; /* Зменшити розмір шрифту */
+    margin-bottom: 5px;
+}
+
+.metrics-display p {
+    margin: 0 5px; /* Зменшити відступи між метриками */
+    white-space: nowrap; /* Запобігти переносу рядків */
+}
+
+#ui-message {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 0.9em; /* Зменшити розмір шрифту */
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Стилі для нижньої панелі */
+#bottom-ui-panel {
+    display: flex;
+    flex-direction: column; /* Елементи один під одним */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7); /* Напівпрозорий фон */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px; /* Відступ від низу */
+    max-width: 90%; /* Обмежити ширину */
+    min-width: 300px;
+    gap: 10px; /* Відступи між групами кнопок/контролів */
+}
+
+.button-group, .controls-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Відступи між кнопками/контролами в групі */
+    width: 100%;
+    flex-wrap: wrap; /* Дозволити перенос елементів на новий рядок для мобільних */
+}
+
+/* Стилі для кнопок */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px; /* Зменшити padding */
+    border: none;
+    border-radius: 5px; /* Зменшити радіус */
+    cursor: pointer;
+    font-size: 0.9em; /* Зменшити розмір шрифту */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #3e8e41;
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Стилі для спадних списків та слайдерів */
+.select-control, .speed-control {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Відступи між label та input/select */
+    font-size: 0.9em;
+}
+
+select {
+    padding: 5px 8px; /* Зменшити padding */
+    border: 1px solid #ccc; /* Зменшити товщину рамки */
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); /* Зменшити тінь */
+}
+
+input[type="range"] {
+    appearance: none;
+    width: 80px; /* Зменшити ширину слайдера */
+    height: 6px; /* Зменшити висоту */
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; /* Зменшити розмір повзунка */
+    height: 16px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #007bff;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#speed-value {
+    font-weight: bold;
+    color: #007bff;
+    width: 30px;
+    text-align: left; /* Вирівняти текст швидкості вліво */
+    font-size: 0.9em;
+}
+
+/* Медіа-запити для дуже малих екранів, якщо потрібно */
+@media (max-width: 480px) {
+    #top-ui-panel, #bottom-ui-panel {
+        padding: 8px;
+        min-width: unset;
+        width: 95%;
+    }
+    
+    .metrics-display {
+        flex-direction: column; /* Метрики можуть бути одна під одною на дуже малих екранах */
+        align-items: center;
+        gap: 2px;
+    }
+
+    button, select, input[type="range"] {
+        font-size: 0.85em; /* Ще трохи зменшити шрифт */
+        padding: 6px 12px;
+    }
+
+    input[type="range"] {
+        width: 70px; /* Ще трохи зменшити ширину слайдера */
+    }
+}
+
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    /* Розташувати верхній, середній (нові кнопки) та нижній панелі */
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* Стилі для нової панелі перемикання режимів */
+#mode-switch-panel {
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: auto; /* Відсуває її від верхньої, якщо не space-between */
+    margin-bottom: auto; /* Відсуває її від нижньої */
+    margin-top: 20px;
+    pointer-events: auto; /* Дозволити кліки */
+}
+/* Стилі для кнопок */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px; /* Зменшити padding */
+    border: none;
+    border-radius: 5px; /* Зменшити радіус */
+    cursor: pointer;
+    font-size: 0.9em; /* Зменшити розмір шрифту */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #3e8e41;
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Стилі для кнопки інформації */
+button.info-button {
+    background-color: #007bff; /* Синій колір */
+    padding: 8px 12px; /* Трохи менший padding для "?" */
+    border-radius: 50%; /* Зробити круглою */
+    width: 35px; /* Фіксована ширина */
+    height: 35px; /* Фіксована висота */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1em; /* Трохи більший шрифт для знаку питання */
+}
+
+button.info-button:hover {
+    background-color: #0056b3;
+}
+button.info-button:active {
+    background-color: #004085;
+}
+
+@media (max-width: 480px) {
+    #top-ui-panel, #bottom-ui-panel, #mode-switch-panel { /* Додано #mode-switch-panel */
+        padding: 8px;
+        min-width: unset;
+        width: 95%;
+    }
+    
+    .metrics-display {
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+    }
+
+    button, select, input[type="range"] {
+        font-size: 0.85em;
+        padding: 6px 12px;
+    }
+
+    input[type="range"] {
+        width: 70px;
+    }
+
+    button.info-button {
+        width: 30px; /* Менша ширина на мобільних */
+        height: 30px; /* Менша висота на мобільних */
+        font-size: 1em;
+    }
+}
