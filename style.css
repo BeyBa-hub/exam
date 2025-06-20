@@ -307,3 +307,62 @@ button.info-button:active {
         font-size: 1em;
     }
 }
+
+/* Стилі для індикатора голосових команд */
+#voice-status-display {
+    margin-left: auto; /* Відсуває його вправо */
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* Темний фон для контрасту */
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Відстань між текстом та індикатором */
+}
+
+#mic-indicator {
+    width: 12px; /* Збільшимо розмір */
+    height: 12px;
+    border-radius: 50%;
+    background-color: grey; /* Початковий колір - вимкнено */
+    transition: background-color 0.3s ease-in-out; /* Плавний перехід кольору */
+}
+
+#mic-indicator.listening {
+    background-color: limegreen; /* Активний колір */
+    animation: pulse 1.5s infinite; /* Додаємо анімацію пульсації */
+}
+
+#mic-indicator.error {
+    background-color: crimson; /* Колір помилки */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Стилі для кнопки голосових команд */
+#toggle-voice-button {
+    display: flex; /* Для вирівнювання іконки та тексту */
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    background-color: #007bff; /* Синій колір */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+}
+
+#toggle-voice-button:hover {
+    background-color: #0056b3;
+}
+
+#toggle-voice-button img {
+    vertical-align: middle; /* Вирівнювання іконки */
+}
