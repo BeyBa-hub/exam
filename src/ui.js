@@ -13,6 +13,12 @@ export class UIController {
         this.animationSpeedInput = document.getElementById('animation-speed'); // Новий елемент
         this.speedValueSpan = document.getElementById('speed-value');          // Новий елемент
 
+        this.voiceStatusText = document.getElementById('voice-status-text');
+        this.micIndicator = document.getElementById('mic-indicator');
+        this.toggleVoiceButton = document.getElementById('toggle-voice-button');
+
+        // Приховуємо панель метрик за замовчуванням (або показуємо, як вам потрібно)
+        this.metricsDisplay = document.querySelector('.metrics-display');
         this.initEventListeners();
         this.showMessage("Завантаження...");
         this.setSpeedValue(this.animationSpeedInput.value); // Встановлюємо початкове значення швидкості
@@ -81,6 +87,23 @@ export class UIController {
     // Встановлює значення швидкості в UI
     setSpeedValue(speed) {
         this.speedValueSpan.textContent = `${parseFloat(speed).toFixed(1)}x`;
+    }
+
+        updateVoiceStatus(isListening, statusText, isError = false) {
+        this.voiceStatusText.textContent = `Голос: ${statusText}`;
+        this.micIndicator.classList.remove('listening', 'error');
+        if (isListening) {
+            this.micIndicator.classList.add('listening');
+        } else if (isError) {
+            this.micIndicator.classList.add('error');
+        }
+    }
+
+    // Новий метод для перемикання видимості метрик (для голосової команди)
+    toggleMetrics(show) {
+        if (this.metricsDisplay) {
+            this.metricsDisplay.style.display = show ? 'block' : 'none'; // Або 'flex' якщо це блок
+        }
     }
 
     // Цей метод більше не потрібен, оскільки кнопки замінені на select
